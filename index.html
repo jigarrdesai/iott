@@ -1,0 +1,56 @@
+<html ng-app="Application">
+<head>
+	<title>Index</title>
+	<link rel="stylesheet" href="assets/css/metro.min.css">
+	<link rel="stylesheet" href="assets/css/metro-responsive.min.css">
+	<link rel="stylesheet" href="assets/css/metro-icons.min.css">
+	<link rel="stylesheet" href="assets/css/metro-schemes.min.css">
+	<link rel="stylesheet" href="server/app.css">
+</head>
+<body ng-context-menu="contextMenu()" ng-controller="App">
+	<div class="container page-content">
+		<!-- <div class="window-caption">
+			<span class="window-caption-icon"><span class="mif-windows"></span></span>
+			<span class="window-caption-title">Window caption</span>
+			<span class="btn-min"></span>
+			<span class="btn-max"></span>
+			<span class="btn-close"></span>
+		</div> -->
+		<div id="header" class="" ng-if="userData" ng-include="'partials/header.html'" ng-controller="App" ng-init="headerInit();"></div>
+		<div ui-view="" class=""></div>
+	</div>
+	<script language="VBScript">
+	Sub myAlert(title, content)
+	MsgBox content, 0, title 
+	End Sub 
+	</script>
+	<script type="text/javascript" src="assets/js/angular/angular.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="assets/js/metro.min.js"></script>
+	<script src="assets/js/angular/angular-route.min.js"></script>
+	<script src="assets/js/angular/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="server/node/modules.js"></script>
+	<script type="text/javascript" src="server/modules/app.js"></script>
+	<script type="text/javascript" src="server/factories/crypto.js"></script>
+	<script type="text/javascript" src="server/factories/db.js"></script>
+	<script type="text/javascript" src="server/factories/users.js"></script>
+	<script type="text/javascript" src="server/factories/devices.js"></script>
+	<script type="text/javascript" src="server/factories/cities.js"></script>
+	<script type="text/javascript" src="server/directives/contextmenu.js"></script>
+	<script type="text/javascript" src="server/controllers/app.js"></script>
+	<script type="text/javascript" src="server/controllers/dashboard.js"></script>
+	<script type="text/javascript" src="server/controllers/changepassword.js"></script>
+	<script type="text/javascript" src="server/controllers/adddevice.js"></script>
+	<script type="text/javascript" src="server/controllers/showdevices.js"></script>
+	<script type="text/javascript" src="server/controllers/adduser.js"></script>
+	<script type="text/javascript" src="server/controllers/showusers.js"></script>
+	<script type="text/javascript" src="server/controllers/login.js"></script>
+	<script type="text/javascript" src="server/controllers/exit.js"></script>
+	<!-- // <script type="text/javascript" src="server/app.js"></script> -->
+	<!--<script type="text/javascript">
+		var app = require('./app/app.js');
+		console.log(app)
+		window.location.assign('http://localhost:3000/');
+	</script>-->
+</body>
+</html>

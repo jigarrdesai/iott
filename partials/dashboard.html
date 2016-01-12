@@ -1,0 +1,12 @@
+<div class="tile-container" ng-if="tiles.length > 0">
+	<div class="tile-wide fg-white" data-role="tile" ng-repeat="tile in tiles">{{getStatusClass(tile)}}
+        <div class="tile-content slide-up-2 iconic">
+            <div class="slide" ng-class="getStatusClass(tile);">
+            	<div class="icon mif-cogs"></div>
+            </div>
+            <div class="slide-over bg-blue text-small padding10">
+            </div>
+            <div class="tile-label">{{ getStatusText(tile) }}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{
+  "name": "Hello World POC",
+  "version": "1.0.0",
+  "main": "index.html",
+  "window": {
+    "frame": true,
+    "width": 500,
+    "height": 500,
+    "toolbar": false,
+    "position": "center",
+    "resizable": true
+  },
+  "scripts": {
+    "start": "nw ."
+  }
+}

@@ -1,0 +1,36 @@
+<div class="grid">
+	<div class="row cells4" style="margin-top: 20%;">
+		<div class="cell colspan2 offset1">
+			<div class="login-form padding20 block-shadow">
+				<form name="login" id="login" ng-submit="formSubmit();">
+					<h1 class="text-light">Login to service</h1>
+					<div class="input-control modern text iconic full-size" data-role="input">
+						<input type="text" ng-model="formData.username" required/>
+						<span class="label">Your Username</span>
+						<span class="informer">Please enter your username</span>
+						<span class="placeholder">Input Username</span>
+						<span class="icon mif-user"></span>
+						<button class="button helper-button clear"><span class="mif-cross"></span></button>
+					</div>
+					<div class="input-control modern password iconic full-size" data-role="input">
+						<input type="password" ng-model="formData.password" required />
+						<span class="label">Your password</span>
+						<span class="informer">Please enter your password</span>
+						<span class="placeholder">Input password</span>
+						<span class="icon mif-lock"></span>
+						<button class="button helper-button reveal"><span class="mif-looks"></span></button>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="button lighten primary">Login</button>
+						<button type="button" class="button danger" ng-click="closeWindow();">Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div data-role="dialog" id="dialog" data-close-button="true" data-type="alert" data-overlay="true" data-window-style="true">
+    <h1>Error</h1>
+    <p>{{errorText}}</p>
+</div>
