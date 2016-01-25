@@ -122,7 +122,7 @@ App.factory('Users', ['$db', function($db) {
 				} else {
 					if(response.length > 0) {
 						data.status = 'success';
-						delete response[0].password;
+						// delete response[0].password;
 						data.data = response[0];
 					} else {
 						data.status = 'error';
@@ -136,7 +136,7 @@ App.factory('Users', ['$db', function($db) {
 		},
 		findAll: function(where, cb) {
 
-			$db.select(tableRows.ID).where(where).get(tableName, function(err, response) {
+			$db.select('id, name').where(where).get(tableName, function(err, response) {
 
 				var data = {};
 				if(err) {
@@ -146,11 +146,29 @@ App.factory('Users', ['$db', function($db) {
 				} else {
 					if(response.length > 0) {
 						data.status = 'success';
-						data.data = response[0];
+						data.data = response;
 					} else {
 						data.status = 'error';
 						data.errorMesage = 'No User Found';
 					}
+				}
+				
+				cb(data);
+
+			});
+		},
+		updateOne: function(updateData, where, cb) {
+			console.log(updateData, where)
+			$db.where(where).update(tableName, updateData, function(err, response) {
+
+				var data = {};
+				if(err) {
+					data.status = 'error';
+					data.errorMessage = err.message;
+
+				} else {
+					
+					data.status = 'success';
 				}
 				
 				cb(data);

@@ -1,6 +1,7 @@
-App.controller('AddUser', ['$scope', '$rootScope', 'Cities', function($scope, $rootScope, Cities) {
+App.controller('AddUser', ['$scope', '$rootScope', '$state', 'Cities', 'Users', function($scope, $rootScope, $state, Cities, Users) {
 
-	$scope.userDetails = $rootScope.userDetails;
+	var roles = ['Super Admin', 'Admin', 'Distributor', 'User'];
+	$scope.userDetails = null;
 	$scope.selectBox = [];
 	$scope.cities = [];
 	$scope.tabIndex = 0;
@@ -8,9 +9,23 @@ App.controller('AddUser', ['$scope', '$rootScope', 'Cities', function($scope, $r
 		role: 4
 	};
 
+	Users.getCurrentUser(function(data){
+		$scope.userDetails = data.data;
+		prepareSelectBox();
+	});
+
+	Cities.findAll({}, function(data){
+		console.log(data)
+		if(data.status == 'success') {
+			$scope.cities = data.data;
+			$scope.city = data.data[0].id;
+		}
+	});
+
 	var prepareSelectBox = function() {
 
 		$scope.selectBox = [];
+		console.log($scope.userDetails)
 		for(i = $scope.userDetails.role + 1; i <= 4; i++) {
 			$scope.selectBox.push({
 				value: i,
@@ -19,38 +34,24 @@ App.controller('AddUser', ['$scope', '$rootScope', 'Cities', function($scope, $r
 		}
 	};
 
-	var getCitiesBox = function() {
-		Cities.findAll({}, function(data){
-			console.log(data)
-			if(data.status == 'success') {
-				$scope.cities = data.data;
-				$scope.city = data.data[0].id;
-			}
-		});
-	};
-
 	$scope.getTabIndex = function() {
-		return $scope.tabIndex++;
+
+		$scope.tabIndex = ($scope.tabIndex ? $scope.tabIndex + 1 : 1);
+		return $scope.tabIndex;
 	};
 
 	$scope.submitForm = function() {
+		console.log(addUserForm)
 		if($scope.addUserForm.$valid) {
 
-			console.log($scope.formData)
+			// Users.creat
 		}
+
+		return false;
 	};
 
-	var roles = ['Super Admin', 'Admin', 'Distributor', 'User'];
-	
-	$scope.$watch('$scope.userDetails', function() {
-		
-		if($scope.userDetails && $scope.selectBox.length == 0 && $scope.cities.length == 0) {
-
-			prepareSelectBox();
-			getCitiesBox();
-
-		}
-
-	}, true);
+	$scope.goBack = function() {
+		$state.transitionTo('dashboard');
+	};
 
 }]);

@@ -1,5 +1,5 @@
 <div class="tile-container" ng-if="tiles.length > 0">
-	<div class="tile-wide fg-white" data-role="tile" ng-repeat="tile in tiles">{{getStatusClass(tile)}}
+	<div class="tile-wide fg-white" data-role="tile" ng-repeat="tile in tiles" ui-sref="show-device({id: tile.id})">
         <div class="tile-content slide-up-2 iconic">
             <div class="slide" ng-class="getStatusClass(tile);">
             	<div class="icon mif-cogs"></div>

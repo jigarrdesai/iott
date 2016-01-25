@@ -1,6 +1,6 @@
-App.controller('Dashboard', ['$scope', '$rootScope', 'Devices', function($scope, $rootScope, Devices) {
+App.controller('Dashboard', ['$scope', 'Devices', function($scope, Devices) {
 
-	Devices.findAll({user_id: $rootScope.userData.userId}, function(data) {
+	Devices.findAll({user_id: localStorage.userId}, function(data) {
 		console.log(data)
 		if(data.status == 'success') {
 			$scope.tiles = data.data;

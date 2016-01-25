@@ -1,23 +1,38 @@
 var App = angular.module('Application', ['ngRoute', 'ui.router', ]);
 App.run(['$rootScope', '$state', '$stateParams', 'Users', '$location', function ($rootScope,   $state,   $stateParams, Users, $location) {
 
-	$rootScope.isLoggedIn = function() {
+	$rootScope.$state = $state;
+	
+	var isLoggedIn = function() {
 		
 		if(!localStorage.userId || !localStorage.accessToken) {
 			return false;
 		}
 		
-		$rootScope.userData = {
-			userId: localStorage.userId,
-			accessToken: localStorage.accessToken
-		};
+		// $rootScope.userData = {
+		// 	userId: localStorage.userId,
+		// 	accessToken: localStorage.accessToken
+		// };
 
 		return true;
 	};
 
+	$rootScope.isLoggedIn = isLoggedIn;
+
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
 		
-		if($rootScope.isLoggedIn()) {
+		if(isLoggedIn()) {
+
+			Users.getCurrentUser(function(data){
+
+				if(data.status == 'success') {
+					$rootScope.userDetails = data.data;
+				} else {
+					event.preventDefault();
+					// $state.go('exit');
+					return false;
+				}
+			});
 
 			if(toState.name == 'login') {
 				event.preventDefault();
@@ -146,10 +161,21 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			templateUrl: 'partials/add-device.html',
 			controller: 'AddDevice'
 		})
-		.state('show-devices', {
-			url: '/show-devices', 
-			templateUrl: 'partials/show-devices.html',
-			controller: 'ShowDevices'
+		.state('show-device', {
+			url: '/show-device/?:id',
+			params: {
+				id: null
+			},
+			templateUrl: 'partials/show-device.html',
+			controller: 'ShowDevice'
+		})
+		.state('show-device-gridview', {
+			url: '/show-device-gridview/?:id',
+			params: {
+				id: null
+			},
+			templateUrl: 'partials/show-device-gridview.html',
+			controller: 'ShowDeviceGridView'
 		})
 		.state('add-user', {
 			url: '/add-user', 
@@ -165,6 +191,11 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			url: '/login', 
 			templateUrl: 'partials/login.html',
 			controller: 'Login'
+		})
+		.state('noconnection', {
+			url: '/noconnection', 
+			templateUrl: 'partials/noconnection.html',
+			controller: 'NoConnection'
 		})
 		.state('exit', {
 			url: '/exit',

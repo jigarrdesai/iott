@@ -1,1 +1,103 @@
-add-device.html
+<div class="grid">
+	<div class="row cells4">
+		<div class="cell colspan2 offset1">
+			<form ng-submit="submitForm()" name="addUser">
+				<div class="grid">
+					<div class="row" ng-if="userDetails.role < 4">
+						<div class="cell">{{selectBox}}
+							<label>Select User</label>
+							<div class="input-control select full-size">
+								<select tabindex="1" ng-model="formData.user" ng-options="item.value as item.label for item in selectBox"></select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Full Name</label>
+							<div class="input-control text full-size" data-role="input">
+								<input tabindex="5" type="text" ng-model="formData.name" required />
+								<button class="button helper-button clear"><span class="mif-cross"></span></button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Password</label>
+							<div class="input-control password full-size" data-role="input">
+								<input tabindex="10" type="password" ng-model="formData.password" required />
+								<button class="button helper-button reveal"><span class="mif-looks"></span></button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Email</label>
+							<div class="input-control email full-size" data-role="input">
+								<input tabindex="15" type="email" ng-model="formData.email" placeholder="Enter Your Email..." required />
+								<button class="button helper-button clear"><span class="mif-cross"></span></button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Contact Number</label>
+							<div class="input-control number full-size" data-role="input">
+								<input tabindex="20" type="number" placeholder="Enter Your Contact Number..." required max-length="10" min-length="10" />
+								<button class="button helper-button clear"><span class="mif-cross"></span></button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Address</label>
+							<div class="input-control textarea full-size" data-role="input" data-text-auto-resize="true" data-text-max-height="200" >
+								<textarea tabindex="25" ng-model="formData.address"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Select City</label>
+							<div class="input-control select full-size">
+								<select tabindex="30" ng-model="formData.city" ng-options="item.id as item.cityname group by item.statename for item in cities"></select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>User Code</label>
+							<div class="input-control text full-size" data-role="input">
+								<input tabindex="35" type="text" ng-model="formData.user_code" placeholder="Enter User Code" required />
+								<button class="button helper-button clear"><span class="mif-cross"></span></button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Total Devices Allotted</label>
+							<div class="input-control number full-size" data-role="input">
+								<input tabindex="40" type="number" ng-model="formData.total_devices" placeholder="Enter number of devices to be allotted" required />
+								<button class="button helper-button clear"><span class="mif-cross"></span></button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Active</label>&nbsp;
+							<label class="switch-original">
+							    <input ng-model="formData.active" type="checkbox">
+							    <span class="check"></span>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<button class="button primary large-button" type="submit">Submit</button>
+							<button class="button large-button" ng-click="goBack();">Back</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

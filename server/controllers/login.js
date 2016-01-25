@@ -1,10 +1,5 @@
-App.controller('Login', ['$scope', '$rootScope', '$state', '$crypto', 'Users', function($scope, $rootScope, $state, $crypto, Users) {
+App.controller('Login', ['$scope', '$state', '$crypto', 'Users', function($scope, $state, $crypto, Users) {
 	
-	if($rootScope.isLoggedIn()) {
-		$state.transitionTo('dashboard');
-		return false;
-	}
-
 	$scope.formData = {};
 
 	$scope.formSubmit = function() {
@@ -25,7 +20,7 @@ App.controller('Login', ['$scope', '$rootScope', '$state', '$crypto', 'Users', f
 					localStorage.accessToken = data.accessToken;
 
 					console.log($state)
-					$state.transitionTo('dashboard');
+					$state.go('dashboard');
 					return false;
 				} else {
 					$scope.errorText = data.errorText;
@@ -38,7 +33,7 @@ App.controller('Login', ['$scope', '$rootScope', '$state', '$crypto', 'Users', f
 	};
 
 	$scope.closeWindow = function() {
-		$state.transitionTo('exit');
+		$state.go('exit');
 	}
 
 }]);

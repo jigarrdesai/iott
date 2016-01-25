@@ -2,7 +2,7 @@
 <head>
 	<title>Index</title>
 	<link rel="stylesheet" href="assets/css/metro.min.css">
-	<link rel="stylesheet" href="assets/css/metro-responsive.min.css">
+	<link rel="stylesheet" href="assets/css/metro-responsive.min.css" ng-if="$state.is('login')">
 	<link rel="stylesheet" href="assets/css/metro-icons.min.css">
 	<link rel="stylesheet" href="assets/css/metro-schemes.min.css">
 	<link rel="stylesheet" href="server/app.css">
@@ -16,7 +16,7 @@
 			<span class="btn-max"></span>
 			<span class="btn-close"></span>
 		</div> -->
-		<div id="header" class="" ng-if="userData" ng-include="'partials/header.html'" ng-controller="App" ng-init="headerInit();"></div>
+		<div id="header" class="" ng-if="userDetails" ng-include="'partials/header.html'" ng-controller="App" ng-init="headerInit();"></div>
 		<div ui-view="" class=""></div>
 	</div>
 	<script language="VBScript">
@@ -41,7 +41,8 @@
 	<script type="text/javascript" src="server/controllers/dashboard.js"></script>
 	<script type="text/javascript" src="server/controllers/changepassword.js"></script>
 	<script type="text/javascript" src="server/controllers/adddevice.js"></script>
-	<script type="text/javascript" src="server/controllers/showdevices.js"></script>
+	<script type="text/javascript" src="server/controllers/showdevice.js"></script>
+	<script type="text/javascript" src="server/controllers/showdevicegridview.js"></script>
 	<script type="text/javascript" src="server/controllers/adduser.js"></script>
 	<script type="text/javascript" src="server/controllers/showusers.js"></script>
 	<script type="text/javascript" src="server/controllers/login.js"></script>
