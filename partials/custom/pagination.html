@@ -1,0 +1,7 @@
+<div class="dataTables_paginate paging_simple_numbers">
+	<a href ng-click="selectPage(1, $event)" class="paginate_button previous" aria-controls="example_table" data-dt-idx="0" tabindex="0" id="example_table_previous">{{::getText('first')}}</a>
+	<span>
+		<a ng-click="selectPage(page.number, $event)" class="paginate_button " aria-controls="example_table" data-dt-idx="{{$index + 1}}" tabindex="0" ng-repeat="page in pages track by $index" ng-class="{active: page.active,disabled: ngDisabled && !page.active}">{{$index + 1}}</a>
+	</span>
+	<a href ng-click="selectPage(page + 1, $event)" class="paginate_button next" ng-class="{disabled: noNext()||ngDisabled}" aria-controls="example_table" data-dt-idx="{{page + 1}}" tabindex="0">{{::getText('next')}}</a>
+</div>

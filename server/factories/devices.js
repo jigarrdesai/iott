@@ -49,6 +49,33 @@ App.factory('Devices', ['$db', function($db) {
 				cb(data);
 
 			});
+		},
+		create: function(create, cb) {
+			var that = this;
+			that.findOne({device_code: create.device_code}, function(data) {
+				if(data.status == 'error') {
+
+					$db.insert('devices', create, function(err, res) {
+						if(err) {
+							cb({
+								status: 'error',
+								errorMessage: err.message
+							});
+						} else {
+							console.log(res)
+							cb({
+								status: 'success',
+								id: res.insertId
+							});
+						}
+					});
+				} else {
+					cb({
+						status: 'error',
+						errorMessage: 'Device already exists'
+					});
+				}
+			});
 		}
 	};
 

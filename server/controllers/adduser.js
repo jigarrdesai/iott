@@ -9,6 +9,12 @@ App.controller('AddUser', ['$scope', '$rootScope', '$state', 'Cities', 'Users', 
 		role: 4
 	};
 
+	var resetFormData = function() {
+		$scope.formData = {
+			role: 4
+		};
+	};
+
 	Users.getCurrentUser(function(data){
 		$scope.userDetails = data.data;
 		prepareSelectBox();
@@ -41,10 +47,26 @@ App.controller('AddUser', ['$scope', '$rootScope', '$state', 'Cities', 'Users', 
 	};
 
 	$scope.submitForm = function() {
-		console.log(addUserForm)
-		if($scope.addUserForm.$valid) {
+		console.log($scope.formData, $scope.addUser)
+		if($scope.addUser.$valid) {
+			console.log('Valid');
+			Users.create($scope.formData, function(data) {
 
-			// Users.creat
+				if(data.status == 'success') {
+					resetFormData();
+					$.Notify({
+					    caption: 'Notify',
+					    content: 'User Added Succesfully.',
+					    type: 'success'
+					});
+				} else {
+					$.Notify({
+					    caption: 'Error',
+					    content: data.errorMessage,
+					    type: 'error'
+					});
+				}
+			});
 		}
 
 		return false;

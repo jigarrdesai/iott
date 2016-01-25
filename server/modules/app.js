@@ -1,5 +1,16 @@
-var App = angular.module('Application', ['ngRoute', 'ui.router', ]);
-App.run(['$rootScope', '$state', '$stateParams', 'Users', '$location', function ($rootScope,   $state,   $stateParams, Users, $location) {
+var App = angular.module('Application', ['ngRoute', 'ui.router', 'ui.bootstrap', ]);
+App.run(['$rootScope', '$state', '$stateParams', '$db', '$timeout', 'Users', '$location', function ($rootScope, $state, $stateParams, $db, $timeout, Users, $location) {
+
+	$rootScope.noConnection = false;
+
+	$timeout(function() {
+		$db.query('SELECT 1 FROM DUAL', function(err, res) {
+			if(err) {
+				console.log(err);
+				// location = 'noconnection.html';
+			}
+		});
+	}, 5000);
 
 	$rootScope.$state = $state;
 	
@@ -17,10 +28,21 @@ App.run(['$rootScope', '$state', '$stateParams', 'Users', '$location', function 
 		return true;
 	};
 
+	var activeConnection = function() {
+
+	};
+
 	$rootScope.isLoggedIn = isLoggedIn;
 
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
 		
+		if($rootScope.noConnection) {
+			console.log('No Connection');
+			event.preventDefault();
+			$state.go('noconnection');
+			return false;
+		}
+
 		if(isLoggedIn()) {
 
 			Users.getCurrentUser(function(data){
@@ -139,6 +161,18 @@ App.run(['$rootScope', '$state', '$stateParams', 'Users', '$location', function 
 		// 	$state.go('login');
 		// }
 	});
+}]);
+
+App.config(['$provide', function($provide){
+
+	$provide.decorator('uibPaginationDirective', function($delegate) {
+		var directive = $delegate[0];
+
+		directive.templateUrl = 'partials/custom/pagination.html';
+
+		return $delegate;
+	});
+
 }]);
 
 App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {

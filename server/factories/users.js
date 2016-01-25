@@ -157,6 +157,33 @@ App.factory('Users', ['$db', function($db) {
 
 			});
 		},
+		create: function(create, cb) {
+			var that = this;
+			that.findOne({username: create.username}, function(data) {
+				if(data.status == 'error') {
+
+					$db.insert('users', create, function(err, res) {
+						if(err) {
+							cb({
+								status: 'error',
+								errorMessage: err.message
+							});
+						} else {
+							console.log(res)
+							cb({
+								status: 'success',
+								id: res.insertId
+							});
+						}
+					});
+				} else {
+					cb({
+						status: 'error',
+						errorMessage: 'User already exists'
+					});
+				}
+			});
+		},
 		updateOne: function(updateData, where, cb) {
 			console.log(updateData, where)
 			$db.where(where).update(tableName, updateData, function(err, response) {

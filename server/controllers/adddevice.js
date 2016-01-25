@@ -1,13 +1,20 @@
-App.controller('AddDevice', ['$scope', 'Users', function($scope, Users) {
+App.controller('AddDevice', ['$scope', 'Users', 'Cities', 'Devices', function($scope, Users, Cities, Devices) {
 
 	var roles = ['Super Admin', 'Admin', 'Distributor', 'User'];
-	$scope.userDetails = null;
+	$scope.userDetails = {};
 	
 	$scope.cities = [];
 	$scope.tabIndex = 0;
 	$scope.formData = {
-		role: 4,
-		user: 0
+		user: 0,
+		device_type: 'OTHER'
+	};
+
+	var resetFormData = function() {
+		$scope.formData = {
+			user: 0,
+			device_type: 'OTHER'
+		};
 	};
 
 	(reInitSelectBox = function() {
@@ -16,18 +23,19 @@ App.controller('AddDevice', ['$scope', 'Users', function($scope, Users) {
 
 	Users.getCurrentUser(function(data){
 		$scope.userDetails = data.data;
+		console.log($scope.userDetails)
 		if($scope.userDetails.role < 4) {	
 			prepareSelectBox();
 		}
 	});
 
-	// Cities.findAll({}, function(data){
-	// 	console.log(data)
-	// 	if(data.status == 'success') {
-	// 		$scope.cities = data.data;
-	// 		$scope.city = data.data[0].id;
-	// 	}
-	// });
+	Cities.findAll({}, function(data){
+		console.log(data)
+		if(data.status == 'success') {
+			$scope.cities = data.data;
+			$scope.city = data.data[0].id;
+		}
+	});
 
 	var prepareSelectBox = function() {
 
@@ -55,10 +63,31 @@ App.controller('AddDevice', ['$scope', 'Users', function($scope, Users) {
 	};
 
 	$scope.submitForm = function() {
-		console.log(addUserForm)
-		if($scope.addUserForm.$valid) {
 
-			// Users.creat
+		if($scope.addDevice.$valid) {
+
+			var formData = angular.copy($scope.formData);
+
+			if(formData.user == 0) {
+				formData.user = angular.copy($scope.userData.id);
+			}
+
+			Devices.create(formData, function(data) {
+				if(data.status == 'success') {
+					resetFormData();
+					$.Notify({
+					    caption: 'Notify',
+					    content: 'Device Added Succesfully.',
+					    type: 'success'
+					});
+				} else {
+					$.Notify({
+					    caption: 'Error',
+					    content: data.errorMessage,
+					    type: 'error'
+					});
+				}
+			});
 		}
 
 		return false;
