@@ -15,7 +15,7 @@
 			</div>
 			<div class="row cells4">
 				<div class="cell padding10">ID: </div>
-				<div class="cell colspan3 padding10">{{device.device_code}}</div>
+				<div class="cell colspan3 padding10">{{ device.messageDetails.ID}}</div>
 			</div>
 			<div class="row cells4">
 				<div class="cell padding10">Mobile No.: </div>
@@ -25,11 +25,11 @@
 		<div class="cell">
 			<div class="row cells4">
 				<div class="cell padding10">Date: </div>
-				<div class="cell colspan3 padding10">{{device.name}}</div>
+				<div class="cell colspan3 padding10">{{ device.messageDetails.date | date : 'dd/MM/yyyy'}}</div>
 			</div>
 			<div class="row cells4">
 				<div class="cell padding10">Time: </div>
-				<div class="cell colspan3 padding10">{{device.device_code}}</div>
+				<div class="cell colspan3 padding10">{{ device.messageDetails.date | date : 'hh:mm a'}}</div>
 			</div>
 			<div class="row cells4">
 				<div class="cell padding10">Signal: </div>
@@ -136,7 +136,7 @@
 			        				<span class="button bg-green">None</span>
 			        			</div>
 			        		</div>
-			        		<div class="row">
+			        		<!-- <div class="row">
 			        			<div class="cell padding10">Over Voltage</div>
 			        		</div>
 			        		<div class="row">
@@ -156,7 +156,7 @@
 			        		</div>
 			        		<div class="row">
 			        			<div class="cell padding10">Reverse Phasing</div>
-			        		</div>
+			        		</div> -->
 			        	</div>
 			        	<div class="cell">&nbsp;</div>
 			        </div>
@@ -174,7 +174,7 @@
 			        				<span class="button bg-green">None</span>
 			        			</div>
 			        		</div>
-			        		<div class="row">
+			        		<!-- <div class="row">
 			        			<div class="cell padding10">OHT/ESR Full</div>
 			        		</div>
 			        		<div class="row">
@@ -182,7 +182,7 @@
 			        		</div>
 			        		<div class="row">
 			        			<div class="cell padding10">Over Pressure</div>
-			        		</div>
+			        		</div> -->
 			        	</div>
 			        	<div class="cell">&nbsp;</div>
 			        </div>

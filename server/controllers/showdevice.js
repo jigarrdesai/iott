@@ -18,6 +18,15 @@ App.controller('ShowDevice', ['$scope', '$state', '$stateParams', 'Devices', fun
 
 				if(key.toUpperCase() == 'A' || key.toUpperCase() == 'V') {
 					device.messageDetails[key] = value.split(',');
+				} else if(key.toUpperCase() == 'D/T') {
+					// var dt =  new Date
+					var dd = value.substring(0, 2);
+					var mm = value.substring(2, 4);
+					var yy = value.substring(4, 6);
+					var hour = value.substring(7, 9);
+					var mins = value.substring(9, 11);
+
+					device.messageDetails.date = new Date(Date.parse(mm+'/'+dd+'/'+yy+' '+hour+':'+mins));
 				} else {
 					device.messageDetails[key] = value;
 				}
