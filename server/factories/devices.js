@@ -3,6 +3,7 @@ App.factory('Devices', ['$db', function($db) {
 	var tableName = 'devices';
 
 	return {
+		db: $db,
 		findOne: function(where, cb) {
 			
 			$db.select('*').where(where).get(tableName, function(err, response) {

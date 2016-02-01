@@ -9,6 +9,7 @@ App.factory('Users', ['$db', function($db) {
 	};
 
 	return {
+		db: $db,
 		getCurrentUser: function(cb) {
 			var userId = localStorage.userId;
 			this.findOne({id: userId}, function(data) {
@@ -99,6 +100,7 @@ App.factory('Users', ['$db', function($db) {
 					
 					that.createAccessToken(data.data.id, function(tokenData){
 						resData.userId = data.data.id;
+						resData.role = data.data.role;
 						resData.accessToken = tokenData.token;
 
 						cb(resData);

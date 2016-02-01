@@ -1,7 +1,16 @@
 <div class="dataTables_paginate paging_simple_numbers">
-	<a href ng-click="selectPage(1, $event)" class="paginate_button previous" aria-controls="example_table" data-dt-idx="0" tabindex="0" id="example_table_previous">{{::getText('first')}}</a>
+<!-- <ul class="custom-pagination">
+	<li ng-if="::boundaryLinks" ng-class="{disabled: noPrevious()||ngDisabled}" class="pagination-first"><a href ng-click="selectPage(1, $event)">{{::getText('first')}}</a></li>
+	<li ng-if="::directionLinks" ng-class="{disabled: noPrevious()||ngDisabled}" class="pagination-prev"><a href ng-click="selectPage(page - 1, $event)">{{::getText('previous')}}</a></li>
+	<li ng-repeat="page in pages track by $index" ng-class="{active: page.active,disabled: ngDisabled && !page.active}" class="pagination-page"><a href ng-click="selectPage(page.number, $event)">{{page.text}}</a></li>
+	<li ng-if="::directionLinks" ng-class="{disabled: noNext()||ngDisabled}" class="pagination-next"><a href ng-click="selectPage(page + 1, $event)">{{::getText('next')}}</a></li>
+	<li ng-if="::boundaryLinks" ng-class="{disabled: noNext()||ngDisabled}" class="pagination-last"><a href ng-click="selectPage(totalPages, $event)">{{::getText('last')}}</a></li>
+</ul> -->
+	<a ng-if="::boundaryLinks" href ng-click="selectPage(1, $event)" ng-class="{disabled: noPrevious()||ngDisabled}" class="paginate_button previous" tabindex="0">{{::getText('first')}}</a>
+	<a ng-if="::directionLinks" href ng-click="selectPage(page - 1, $event)" ng-class="{disabled: noPrevious()||ngDisabled}" class="paginate_button previous" tabindex="0">{{::getText('previous')}}</a>
 	<span>
 		<a ng-click="selectPage(page.number, $event)" class="paginate_button " aria-controls="example_table" data-dt-idx="{{$index + 1}}" tabindex="0" ng-repeat="page in pages track by $index" ng-class="{active: page.active,disabled: ngDisabled && !page.active}">{{$index + 1}}</a>
 	</span>
-	<a href ng-click="selectPage(page + 1, $event)" class="paginate_button next" ng-class="{disabled: noNext()||ngDisabled}" aria-controls="example_table" data-dt-idx="{{page + 1}}" tabindex="0">{{::getText('next')}}</a>
+	<a ng-if="::directionLinks" ng-class="{disabled: noNext()||ngDisabled}" href ng-click="selectPage(page + 1, $event)" class="paginate_button next">{{::getText('next')}}</a></li>
+	<a ng-if="::boundaryLinks" ng-class="{disabled: noNext()||ngDisabled}" href ng-click="selectPage(totalPages, $event)" class="paginate_button last">{{::getText('last')}}</a></li>
 </div>

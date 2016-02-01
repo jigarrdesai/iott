@@ -1,37 +1,37 @@
-<!-- <uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></uib-pagination> -->
+<uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></uib-pagination>
 <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre>
 
 <table id="example_table" class="dataTable striped border bordered">
     <thead>
         <tr>
             <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
+            <th>Email</th>
+            <th>User Name</th>
+            <th>Mobile</th>
+            <th>User Code</th>
+            <th>Created By</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
             <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
+            <th>Email</th>
+            <th>User Name</th>
+            <th>Mobile</th>
+            <th>User Code</th>
+            <th>Created By</th>
         </tr>
     </tfoot>
     <tbody>
-        <tr>
-            <td>Donna Snider</td>
-            <td>Customer Support</td>
-            <td>New York</td>
-            <td>27</td>
-            <td>2011/01/25</td>
-            <td>$112,000</td>
+        <tr ng-if="items.length > 0" ng-repeat="item in items">
+            <td>{{item.name}}</td>
+            <td>{{item.bcc_email}}</td>
+            <td>{{item.username}}</td>
+            <td>{{item.mobile_number}}</td>
+            <td>{{item.user_code}}</td>
+            <td>{{item.creator_name}}</td>
         </tr>
     </tbody>
 </table>
 
-<div class="dataTables_info" id="example_table_info" role="status" aria-live="polite">Showing 51 to 57 of 57 entries</div>
+<div class="dataTables_info" id="example_table_info" role="status" aria-live="polite">Showing {{offset + 1}} to {{offset + count}} of 10 entries</div>

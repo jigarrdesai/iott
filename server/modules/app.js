@@ -7,7 +7,7 @@ App.run(['$rootScope', '$state', '$stateParams', '$db', '$timeout', 'Users', '$l
 		$db.query('SELECT 1 FROM DUAL', function(err, res) {
 			if(err) {
 				console.log(err);
-				// location = 'noconnection.html';
+				window.location = 'noconnection.html';
 			}
 		});
 	}, 5000);

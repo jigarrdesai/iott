@@ -17,6 +17,7 @@ App.controller('Login', ['$scope', '$state', '$crypto', 'Users', function($scope
 				
 				if(data.status == 'success') {
 					localStorage.userId = data.userId;
+					localStorage.role = data.role;
 					localStorage.accessToken = data.accessToken;
 
 					console.log($state)
