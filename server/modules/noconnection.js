@@ -7,5 +7,5 @@ App.run(['$db', function ($db) {
 				window.location = 'index.html';
 			}
 		});
-	}, 5000);
+	}, 2000);
 }]);

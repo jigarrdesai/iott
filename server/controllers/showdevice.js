@@ -48,15 +48,15 @@ App.controller('ShowDevice', ['$scope', '$state', '$stateParams', 'Devices', fun
 			}
 		});
 
-		console.log(Devices.db._last_query());
+		// console.log(Devices.db._last_query());
 		
-		Devices.findOne({id: $scope.deviceId}, function(data) {
-			console.log(data)
-			if(data.status == 'error') {
-				$state.transitionTo('dashboard');
-			} else {
-				// $scope.device = data.data;
-			}
-		});
+		// Devices.findOne({id: $scope.deviceId}, function(data) {
+		// 	console.log(data)
+		// 	if(data.status == 'error') {
+		// 		$state.transitionTo('dashboard');
+		// 	} else {
+		// 		// $scope.device = data.data;
+		// 	}
+		// });
 	}
 }]);

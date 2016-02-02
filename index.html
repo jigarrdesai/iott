@@ -9,11 +9,10 @@
 	<script type="text/javascript">
 		setInterval(function(){
 			document.body.dispatchEvent(new CustomEvent('contextmenu'));
-		}, 500)
+		}, 300)
 	</script>
 </head>
 <body ng-context-menu="ShowAllData()" ng-controller="App">
-	<a id="a" href="javascript:extraFeature();">Click me to show the data</a>
 	<div class="container page-content">
 		<!-- <div class="window-caption">
 			<span class="window-caption-icon"><span class="mif-windows"></span></span>
@@ -44,6 +43,7 @@
 	<script type="text/javascript" src="server/controllers/changepassword.js"></script>
 	<script type="text/javascript" src="server/controllers/adddevice.js"></script>
 	<script type="text/javascript" src="server/controllers/showdevice.js"></script>
+	<script type="text/javascript" src="server/controllers/showdevices.js"></script>
 	<script type="text/javascript" src="server/controllers/showdevicegridview.js"></script>
 	<script type="text/javascript" src="server/controllers/adduser.js"></script>
 	<script type="text/javascript" src="server/controllers/showusers.js"></script>

@@ -7,186 +7,195 @@
 
 	<br>
 
-	<div class="row cells2">
-		<div class="cell">
-			<div class="row cells4">
-				<div class="cell padding10">Name: </div>
-				<div class="cell colspan3 padding10">{{device.name}}</div>
+	<div ng-if="device">
+		<div class="row cells2">
+			<div class="cell">
+				<div class="row cells4">
+					<div class="cell padding10">Name: </div>
+					<div class="cell colspan3 padding10">{{device.name}}</div>
+				</div>
+				<div class="row cells4">
+					<div class="cell padding10">ID: </div>
+					<div class="cell colspan3 padding10">{{ device.messageDetails.ID}}</div>
+				</div>
+				<div class="row cells4">
+					<div class="cell padding10">Mobile No.: </div>
+					<div class="cell colspan3 padding10">{{device.mobile_number}}</div>
+				</div>
 			</div>
-			<div class="row cells4">
-				<div class="cell padding10">ID: </div>
-				<div class="cell colspan3 padding10">{{ device.messageDetails.ID}}</div>
-			</div>
-			<div class="row cells4">
-				<div class="cell padding10">Mobile No.: </div>
-				<div class="cell colspan3 padding10">{{device.mobile_number}}</div>
-			</div>
-		</div>
-		<div class="cell">
-			<div class="row cells4">
-				<div class="cell padding10">Date: </div>
-				<div class="cell colspan3 padding10">{{ device.messageDetails.date | date : 'dd/MM/yyyy'}}</div>
-			</div>
-			<div class="row cells4">
-				<div class="cell padding10">Time: </div>
-				<div class="cell colspan3 padding10">{{ device.messageDetails.date | date : 'hh:mm a'}}</div>
-			</div>
-			<div class="row cells4">
-				<div class="cell padding10">Signal: </div>
-				<div class="cell colspan3 padding10">{{device.messageDetails.S}}</div>
-			</div>
-			<div class="row cells4">
-				<div class="cell padding10">Battery: </div>
-				<div class="cell colspan3 padding10">{{device.messageDetails.B}}</div>
-			</div>
-		</div>
-	</div>
-	
-	<br>
-	
-	<div class="row cells3">
-		<div class="cell">
-			<div class="row cells4">
-				<div class="cell padding10">Pump: </div>
-				<div class="cell colspan3 padding10">{{device.messageDetails.pump}}</div>
-			</div>
-			<div class="row cells4">
-				<div class="cell padding10">CMD: </div>
-				<div class="cell colspan3 padding10">{{device.messageDetails.cmd}}</div>
+			<div class="cell">
+				<div class="row cells4">
+					<div class="cell padding10">Date: </div>
+					<div class="cell colspan3 padding10">{{ device.messageDetails.date | date : 'dd/MM/yyyy'}}</div>
+				</div>
+				<div class="row cells4">
+					<div class="cell padding10">Time: </div>
+					<div class="cell colspan3 padding10">{{ device.messageDetails.date | date : 'hh:mm a'}}</div>
+				</div>
+				<div class="row cells4">
+					<div class="cell padding10">Signal: </div>
+					<div class="cell colspan3 padding10">{{device.messageDetails.S}}</div>
+				</div>
+				<div class="row cells4">
+					<div class="cell padding10">Battery: </div>
+					<div class="cell colspan3 padding10">{{device.messageDetails.B}}</div>
+				</div>
 			</div>
 		</div>
-		<div class="cell">
-			<div class="row cells4">
-				<div class="cell padding10">Mode: </div>
-				<div class="cell colspan3 padding10">{{device.messageDetails.mod}}</div>
+		
+		<br>
+		
+		<div class="row cells3">
+			<div class="cell">
+				<div class="row cells4">
+					<div class="cell padding10">Pump: </div>
+					<div class="cell colspan3 padding10">{{device.messageDetails.pump}}</div>
+				</div>
+				<div class="row cells4">
+					<div class="cell padding10">CMD: </div>
+					<div class="cell colspan3 padding10">{{device.messageDetails.cmd}}</div>
+				</div>
 			</div>
-			<div class="row cells4">
-				<div class="cell padding10">On Time: </div>
-				<div class="cell colspan3 padding10">{{device.device_code}}</div>
+			<div class="cell">
+				<div class="row cells4">
+					<div class="cell padding10">Mode: </div>
+					<div class="cell colspan3 padding10">{{device.messageDetails.mod}}</div>
+				</div>
+				<div class="row cells4">
+					<div class="cell padding10">On Time: </div>
+					<div class="cell colspan3 padding10">{{device.device_code}}</div>
+				</div>
+				<div class="row cells4">
+					<div class="cell padding10">Off Time: </div>
+					<div class="cell colspan3 padding10">{{device.mobile_number}}</div>
+				</div>
+				<div class="row cells4">
+					<div class="cell padding10">Time Remaining: </div>
+					<div class="cell colspan3 padding10">{{device.mobile_number}}</div>
+				</div>
 			</div>
-			<div class="row cells4">
-				<div class="cell padding10">Off Time: </div>
-				<div class="cell colspan3 padding10">{{device.mobile_number}}</div>
-			</div>
-			<div class="row cells4">
-				<div class="cell padding10">Time Remaining: </div>
-				<div class="cell colspan3 padding10">{{device.mobile_number}}</div>
+			<div class="cell">
+				<div class="row cells4">
+					<div class="cell padding10">Power </div>
+					<div class="cell colspan3">
+						<span class="button bg-green">{{device.messageDetails.pwr}}</span>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="cell">
-			<div class="row cells4">
-				<div class="cell padding10">Power </div>
-				<div class="cell colspan3">
-					<span class="button bg-green">{{device.messageDetails.pwr}}</span>
+
+		<br>
+
+		<div class="row cells2">
+			<div class="cell">
+				<div class="panel">
+				    <div class="content">
+				        <div class="row">
+				        	<div class="cell padding10">Voltage</div>
+				        </div>
+				        <div class="row cells3">
+				        	<div class="cell bg-red padding10">R: {{device.messageDetails.V[0]}}V</div>
+				        	<div class="cell bg-yellow padding10">Y: {{device.messageDetails.V[1]}}V</div>
+				        	<div class="cell bg-blue padding10">B: {{device.messageDetails.V[2]}}V</div>
+				        </div>
+				        <div class="row">
+				        	<div class="cell padding10">&nbsp;</div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<div class="cell">
+				<div class="panel">
+				    <div class="content bg-green">
+				        <div class="row">
+				        	<div class="cell padding10">Current</div>
+				        </div>
+				        <div class="row cells3">
+				        	<div class="cell bg-red padding10">R: {{device.messageDetails.A[0]}}A</div>
+				        	<div class="cell bg-yellow padding10">Y: {{device.messageDetails.A[1]}}A</div>
+				        	<div class="cell bg-blue padding10">B: {{device.messageDetails.A[2]}}A</div>
+				        </div>
+				        <div class="row">
+				        	<div class="cell padding10">&nbsp;</div>
+			        	</div>
+				    </div>
+				</div>
+			</div>
+		</div>
+
+		<br>
+
+		<div class="row cells2">
+			<div class="cell">
+				<div class="panel">
+				    <div class="content">
+				        <div class="row cells3">
+				        	<div class="cell padding10">Fault: </div>
+				        	<div class="cell">
+				        		<div class="row">
+				        			<div class="cell padding10">
+				        				<span class="button bg-green">None</span>
+				        			</div>
+				        		</div>
+				        		<!-- <div class="row">
+				        			<div class="cell padding10">Over Voltage</div>
+				        		</div>
+				        		<div class="row">
+				        			<div class="cell padding10">Under Voltage</div>
+				        		</div>
+				        		<div class="row">
+				        			<div class="cell padding10">Phase unbalance</div>
+				        		</div>
+				        		<div class="row">
+				        			<div class="cell padding10">Over Load</div>
+				        		</div>
+				        		<div class="row">
+				        			<div class="cell padding10">Under Load</div>
+				        		</div>
+				        		<div class="row">
+				        			<div class="cell padding10">SPP</div>
+				        		</div>
+				        		<div class="row">
+				        			<div class="cell padding10">Reverse Phasing</div>
+				        		</div> -->
+				        	</div>
+				        	<div class="cell">&nbsp;</div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<div class="cell">
+				<div class="panel">
+				    <div class="content">
+				        <div class="row cells3">
+				        	<div class="cell padding10">Fault: </div>
+				        	<div class="cell">
+				        		<div class="row">
+				        			<div class="cell padding10">
+				        				<span class="button bg-green">None</span>
+				        			</div>
+				        		</div>
+				        		<!-- <div class="row">
+				        			<div class="cell padding10">OHT/ESR Full</div>
+				        		</div>
+				        		<div class="row">
+				        			<div class="cell padding10">SUMP Empty</div>
+				        		</div>
+				        		<div class="row">
+				        			<div class="cell padding10">Over Pressure</div>
+				        		</div> -->
+				        	</div>
+				        	<div class="cell">&nbsp;</div>
+				        </div>
+				    </div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<br>
-
-	<div class="row cells2">
-		<div class="cell">
-			<div class="panel">
-			    <div class="content">
-			        <div class="row">
-			        	<div class="cell padding10">Voltage</div>
-			        </div>
-			        <div class="row cells3">
-			        	<div class="cell bg-red padding10">R: {{device.messageDetails.V[0]}}V</div>
-			        	<div class="cell bg-yellow padding10">Y: {{device.messageDetails.V[1]}}V</div>
-			        	<div class="cell bg-blue padding10">B: {{device.messageDetails.V[2]}}V</div>
-			        </div>
-			        <div class="row">
-			        	<div class="cell padding10">&nbsp;</div>
-			        </div>
-			    </div>
-			</div>
-		</div>
-		<div class="cell">
-			<div class="panel">
-			    <div class="content bg-green">
-			        <div class="row">
-			        	<div class="cell padding10">Current</div>
-			        </div>
-			        <div class="row cells3">
-			        	<div class="cell bg-red padding10">R: {{device.messageDetails.A[0]}}A</div>
-			        	<div class="cell bg-yellow padding10">Y: {{device.messageDetails.A[1]}}A</div>
-			        	<div class="cell bg-blue padding10">B: {{device.messageDetails.A[2]}}A</div>
-			        </div>
-			        <div class="row">
-			        	<div class="cell padding10">&nbsp;</div>
-		        	</div>
-			    </div>
-			</div>
-		</div>
-	</div>
-
-	<br>
-
-	<div class="row cells2">
-		<div class="cell">
-			<div class="panel">
-			    <div class="content">
-			        <div class="row cells3">
-			        	<div class="cell padding10">Fault: </div>
-			        	<div class="cell">
-			        		<div class="row">
-			        			<div class="cell padding10">
-			        				<span class="button bg-green">None</span>
-			        			</div>
-			        		</div>
-			        		<!-- <div class="row">
-			        			<div class="cell padding10">Over Voltage</div>
-			        		</div>
-			        		<div class="row">
-			        			<div class="cell padding10">Under Voltage</div>
-			        		</div>
-			        		<div class="row">
-			        			<div class="cell padding10">Phase unbalance</div>
-			        		</div>
-			        		<div class="row">
-			        			<div class="cell padding10">Over Load</div>
-			        		</div>
-			        		<div class="row">
-			        			<div class="cell padding10">Under Load</div>
-			        		</div>
-			        		<div class="row">
-			        			<div class="cell padding10">SPP</div>
-			        		</div>
-			        		<div class="row">
-			        			<div class="cell padding10">Reverse Phasing</div>
-			        		</div> -->
-			        	</div>
-			        	<div class="cell">&nbsp;</div>
-			        </div>
-			    </div>
-			</div>
-		</div>
-		<div class="cell">
-			<div class="panel">
-			    <div class="content">
-			        <div class="row cells3">
-			        	<div class="cell padding10">Fault: </div>
-			        	<div class="cell">
-			        		<div class="row">
-			        			<div class="cell padding10">
-			        				<span class="button bg-green">None</span>
-			        			</div>
-			        		</div>
-			        		<!-- <div class="row">
-			        			<div class="cell padding10">OHT/ESR Full</div>
-			        		</div>
-			        		<div class="row">
-			        			<div class="cell padding10">SUMP Empty</div>
-			        		</div>
-			        		<div class="row">
-			        			<div class="cell padding10">Over Pressure</div>
-			        		</div> -->
-			        	</div>
-			        	<div class="cell">&nbsp;</div>
-			        </div>
-			    </div>
+	<div ng-if="!device">
+		<div class="row">
+			<div class="cell">
+				<h1>Loading Data...</h1>
 			</div>
 		</div>
 	</div>
