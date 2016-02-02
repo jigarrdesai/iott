@@ -1,7 +1,10 @@
 <div class="grid">
 	<div class="row">
-		<div class="cell">
+		<div class="cell" ng-if="userDetails">
 			<h1>Welcome, {{userDetails.name}}</h1>
+		</div>
+		<div class="cell" ng-if="!userDetails">
+			<h1>Loading User Details</h1>
 		</div>
 	</div>
 	<div class="row">

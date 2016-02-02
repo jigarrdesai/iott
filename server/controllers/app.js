@@ -14,6 +14,28 @@ App.controller('App', ['$scope', '$rootScope', 'Users', function($scope, $rootSc
 		}
 	};
 
+	$scope.ShowAllData = function($event) {
+
+		// var menu = new GUI.Menu();
+		// menu.append(new GUI.MenuItem({
+		// 	label: 'Alert Me!',
+		// 	click: function() {
+		// 		alert('This is an alert')
+		// 	}
+		// }));
+		// menu.append(new GUI.MenuItem({ label: 'Item B' }));
+		// menu.append(new GUI.MenuItem({ type: 'separator' }));
+		// menu.append(new GUI.MenuItem({
+		// 	label: 'Show Dev Tools',
+		// 	click: function() {
+		// 		GUI.Window.get().showDevTools();
+		// 	}
+		// }));
+
+		// menu.popup(event.x, event.y);
+		return false;
+	};
+
 	$scope.contextMenu = function($event) {
 
 		var menu = new GUI.Menu();
