@@ -203,6 +203,14 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			templateUrl: 'partials/show-device.html',
 			controller: 'ShowDevice'
 		})
+		.state('edit-device', {
+			url: '/edit-device/?:id',
+			params: {
+				id: null
+			},
+			templateUrl: 'partials/edit-device.html',
+			controller: 'EditDevice'
+		})
 		.state('show-devices', {
 			url: '/show-devices/?:id',
 			params: {

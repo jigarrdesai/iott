@@ -6,9 +6,10 @@ App.factory('Devices', ['$db', function($db) {
 		db: $db,
 		findOne: function(where, cb) {
 			
-			$db.select('*').where(where).get(tableName, function(err, response) {
+			$db.select('*').where(where).limit(1).get(tableName, function(err, response) {
 
 				var data = {};
+				console.log(response)
 				if(err) {
 					data.status = 'error';
 					data.errorMessage = err.message;
@@ -16,11 +17,10 @@ App.factory('Devices', ['$db', function($db) {
 				} else {
 					if(response.length > 0) {
 						data.status = 'success';
-						delete response[0].password;
 						data.data = response[0];
 					} else {
 						data.status = 'error';
-						data.errorMesage = 'No User Found';
+						data.errorMesage = 'No Device Found';
 					}
 				}
 				
@@ -77,6 +77,36 @@ App.factory('Devices', ['$db', function($db) {
 					});
 				}
 			});
+		},
+		delete: function(where, cb) {
+			$db.where(where)
+				.delete('devices', function(err, data) {
+					if(err) {
+						cb({
+							status: 'error',
+							errorMessage: err.message
+						});
+					} else {
+						cb({
+							status: 'success'
+						});
+					}
+				})
+		},
+		update: function(update, where, cb) {
+			$db.where(where)
+				.update('devices', update, function(err, data) {
+					if(err) {
+						cb({
+							status: 'error',
+							errorMessage: err.message
+						});
+					} else {
+						cb({
+							status: 'success'
+						});
+					}
+				})
 		}
 	};
 

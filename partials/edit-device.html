@@ -1,0 +1,75 @@
+<div class="grid">
+	<div class="row cells4">
+		<div class="cell colspan2 offset1">
+			<form ng-submit="submitForm()" name="addDevice" ng-if="dataLoaded">
+				<div class="grid">
+				<!-- <div class="">{{userDetails.role < 4}}</div> -->
+					<div class="row">
+						<div class="cell">
+							<label>Device Code</label>
+							<div class="input-control text full-size" data-role="input">
+								<input tabindex="5" type="text" ng-model="formData.device_code" required />
+								<button class="button helper-button clear"><span class="mif-cross"></span></button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Mobile Number</label>
+							<div class="input-control text full-size" data-role="input">
+								<input tabindex="20" type="text" ng-model="formData.mobile_number" placeholder="Enter Your Contact Number..." required />
+								<button class="button helper-button clear"><span class="mif-cross"></span></button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Address</label>
+							<div class="input-control textarea full-size" data-role="input" ng-model="formData.address" data-text-auto-resize="true" data-text-max-height="200" >
+								<textarea tabindex="25" ng-model="formData.address"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<label>Select City</label>
+							<div class="input-control select full-size">
+								<select tabindex="30" ng-model="formData.city" ng-options="item.id as item.cityname group by item.statename for item in cities"></select>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="row">
+						<div class="cell">
+							<label>User Code</label>
+							<div class="input-control text full-size" data-role="input">
+								<input tabindex="35" type="text" ng-model="formData.user_code" placeholder="Enter User Code" required />
+								<button class="button helper-button clear"><span class="mif-cross"></span></button>
+							</div>
+						</div>
+					</div> -->
+					<div class="row">
+						<div class="cell">
+							<label>Device Type</label>
+							<div class="input-control select full-size">
+								<select tabindex="30" ng-model="formData.device_type">
+									<option value="GPRS">GPRS</option>
+									<option value="GSM">GSM</option>
+									<option value="OTHER">OTHER</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell">
+							<button class="button primary large-button" type="submit">Submit</button>
+							<button class="button large-button" ng-click="goBack();">Back</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="" ng-if="!dataLoaded">
+				<h1>Loading Data...</h1>
+			</div>
+		</div>
+	</div>
+</div>

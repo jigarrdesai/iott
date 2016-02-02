@@ -3,32 +3,45 @@
 <table id="example_table" class="dataTable striped border bordered">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>User Name</th>
+            <th>Device Code</th>
+            <th>Device Type</th>
+            <th>Address</th>
+            <th>City</th>
             <th>Mobile</th>
-            <th>User Code</th>
             <th>Created By</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>User Name</th>
+            <th>Device Code</th>
+            <th>Device Type</th>
+            <th>Address</th>
+            <th>City</th>
             <th>Mobile</th>
-            <th>User Code</th>
             <th>Created By</th>
+            <th>Actions</th>
         </tr>
     </tfoot>
     <tbody>
         <tr ng-if="items.length > 0" ng-repeat="item in items">
-            <td>{{item.name}}</td>
-            <td>{{item.bcc_email}}</td>
-            <td>{{item.username}}</td>
+            <td>{{item.device_code}}</td>
+            <td>{{item.device_type}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.cityname}}</td>
             <td>{{item.mobile_number}}</td>
-            <td>{{item.user_code}}</td>
             <td>{{item.creator_name}}</td>
+            <td>
+                <a href="javascript:void(0);" ng-click="editDevice(item.id)">
+                    <span class="mif-pencil"></span>
+                </a>
+                <a href="javascript:void(0);" ng-click="startStopDevice(item)">
+                    <span ng-class="deviceOff(item) ? 'mif-play' : 'mif-stop'"></span>
+                </a>
+                <a href="javascript:void(0);" ng-click="deleteDevice(item.id)">
+                    <span class="mif-cross"></span>
+                </a>
+            </td>
         </tr>
     </tbody>
 </table>
