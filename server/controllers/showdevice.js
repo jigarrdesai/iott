@@ -1,4 +1,4 @@
-App.controller('ShowDevice', ['$scope', '$state', '$stateParams', 'Devices', function($scope, $state, $stateParams, Devices) {
+App.controller('ShowDevice', ['$scope', '$state', '$http', '$stateParams', 'Devices', function($scope, $state, $http, $stateParams, Devices) {
 
 	$scope.deviceId = $stateParams.id;
 
@@ -32,7 +32,49 @@ App.controller('ShowDevice', ['$scope', '$state', '$stateParams', 'Devices', fun
 				}
 			}
 		}
-		console.log($scope);
+	};
+
+	console.log($scope)
+
+	$scope.getStatus = function(number) {
+		var url = 'http://www.webpostservice.com/sendsms/sendsms.php?username=amond&password=RiO8fz&type=TEXT&sender=RSWTTW';
+		url += '&mobile=' + encodeURIComponent(number) + '&message=*GET#';
+
+		$http({
+			method: 'GET',
+			url: url
+		}, function(response) {
+			console.log(response)
+		});
+	};
+
+	$scope.getOnOffClass = function(cmd) {
+		console.log(cmd)
+		if(cmd.toUpperCase() == 'OFF') {
+			return 'bg-red';
+		}
+		return 'bg-green';
+	};
+
+	$scope.toggleOnOff = function(cmd) {
+
+		if(cmd.toUpperCase() == 'OFF') {
+			return 'ON';
+		}
+		return 'OFF';
+	};
+
+	$scope.onOffPump = function(device) {
+		var url = 'http://www.webpostservice.com/sendsms/sendsms.php?username=amond&password=RiO8fz&type=TEXT&sender=RSWTTW';
+		url += '&mobile=' + encodeURIComponent(device.mobile_number) + '&message=*' + device.messageDetails.cmd.toUpperCase() + '#';
+
+		$http({
+			method: 'GET',
+			url: url
+		}, function(response) {
+			console.log(response)
+			device.messageDetails.cmd = $scope.toggleOnOff(device.messageDetails.cmd);
+		});
 	};
 
 	if(!$scope.deviceId || $scope.deviceId == 0) {

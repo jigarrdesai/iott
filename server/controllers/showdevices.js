@@ -9,6 +9,7 @@ App.controller('ShowDevices', ['$scope', '$state', 'Devices', function($scope, $
 	$scope.limit = 10;
 	$scope.offset = 0;
 
+	console.log($scope)
 	var getDevicesList = function() {
 		$scope.limit = angular.copy($scope.itemsPerPage);
 		$scope.offset = ($scope.currentPage - 1) * $scope.itemsPerPage;

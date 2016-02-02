@@ -53,7 +53,9 @@
 				</div>
 				<div class="row cells4">
 					<div class="cell padding10">CMD: </div>
-					<div class="cell colspan3 padding10">{{device.messageDetails.cmd}}</div>
+					<div class="cell colspan3">
+						<button class="button" ng-class="getOnOffClass(device.messageDetails.cmd)" ng-click="onOffPump(device)">{{device.messageDetails.cmd}}</button>
+					</div>
 				</div>
 			</div>
 			<div class="cell">
